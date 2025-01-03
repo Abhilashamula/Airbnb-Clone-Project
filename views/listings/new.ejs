@@ -1,0 +1,111 @@
+<% layout("/layouts/biolerplate") %>
+<body class="d-flex flex-column" style="min-height: 100vh">
+  <!-- Main Content -->
+  <div
+    class="container d-flex justify-content-center align-items-center flex-grow-1"
+  >
+    <div class="card p-3" style="max-width: 400px; width: 100%">
+      <h2 class="text-center mb-3">Add New Vrooms</h2>
+      <form
+        class="row g-3 needs-validation"
+        method="post"
+        action="/listings"
+        novalidate
+      >
+        <!-- Title -->
+        <div class="mb-2">
+          <label for="title" class="form-label">Title:</label>
+          <input
+            type="text"
+            id="title"
+            name="listing[title]"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Title looks good</div>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-2">
+          <label for="description" class="form-label">Description:</label>
+          <textarea
+            id="description"
+            name="listing[description]"
+            rows="3"
+            class="form-control"
+            required
+          ></textarea>
+          <div class="valid-feedback">Description looks good</div>
+        </div>
+
+        <!-- Image Filename -->
+        <div class="mb-2">
+          <label for="image-filename" class="form-label">Image Filename:</label>
+          <input
+            type="text"
+            id="image-filename"
+            name="listing[image][filename]"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">ImageFileName Looks Good</div>
+        </div>
+
+        <!-- Image URL -->
+        <div class="mb-2">
+          <label for="image-url" class="form-label">Image URL:</label>
+          <input
+            type="url"
+            id="image-url"
+            name="listing[image][url]"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Image Url Looks Good</div>
+        </div>
+
+        <!-- Price -->
+        <div class="mb-2">
+          <label for="price" class="form-label">Price (per night):</label>
+          <input
+            type="number"
+            id="price"
+            name="listing[price]"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Price looks Good</div>
+        </div>
+
+        <!-- Location -->
+        <div class="mb-2">
+          <label for="location" class="form-label">Location:</label>
+          <input
+            type="text"
+            id="location"
+            name="listing[location]"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Location Looks Good</div>
+        </div>
+
+        <!-- Country -->
+        <div class="mb-2">
+          <label for="country" class="form-label">Country:</label>
+          <input
+            type="text"
+            id="country"
+            name="listing[country]"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Country Looks Good</div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-success w-100">Add Listing</button>
+      </form>
+    </div>
+  </div>
+</body>

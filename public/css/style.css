@@ -1,0 +1,306 @@
+.plus-jakarta-sans-body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.navbar {
+  height: 4rem;
+  background-color: white;
+}
+.fa-dog,
+.fa-shield-dog {
+  color: #fe424d;
+  font-size: 2rem;
+}
+.nav-link {
+  color: #222222 !important;
+}
+footer {
+  background-color: #f5f5f5; /* Softer gray background for a clean look */
+  padding: 0.5rem 0; /* Reduce padding for a smaller size */
+  text-align: center; /* Center-align content */
+  font-family: "Plus Jakarta Sans", sans-serif; /* Use consistent font */
+  position: initial; /* Fix footer at the bottom */
+  bottom: 0; /* Ensure it's at the bottom */
+  width: 100%; /* Full width across the screen */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+  z-index: 1000; /* Ensure footer is above other elements */
+}
+
+.f-info {
+  max-width: 1200px; /* Center content within a max width */
+  margin: 0 auto; /* Center align */
+  display: flex;
+  justify-content: space-between; /* Space out branding, icons, and links */
+  align-items: center; /* Vertically align content */
+  flex-wrap: wrap; /* Adjust layout on smaller screens */
+  gap: 0.5rem; /* Space between sections */
+  padding: 0 1rem; /* Horizontal padding */
+}
+
+.f-brand {
+  font-size: 0.9rem; /* Smaller branding font */
+  color: #333; /* Text color */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.f-info-socials {
+  display: flex;
+  gap: 0.8rem; /* Space between icons */
+  justify-content: center; /* Center-align icons */
+}
+
+.f-info-socials i {
+  font-size: 1rem; /* Adjust icon size */
+  color: #666; /* Neutral icon color */
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+}
+
+.f-info-socials i:hover {
+  color: #0073e6; /* Blue color on hover */
+  transform: scale(1.2); /* Slight zoom effect */
+}
+
+.f-info-links {
+  display: flex;
+  gap: 1rem; /* Space between links */
+  justify-content: center; /* Center-align links */
+}
+
+.f-info-links a {
+  text-decoration: none; /* Remove underline */
+  color: #333; /* Link color */
+  font-size: 0.85rem; /* Slightly smaller font size */
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.f-info-links a:hover {
+  color: #0073e6; /* Blue hover color */
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .f-info {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+    gap: 0.5rem; /* Reduce gap for smaller screens */
+  }
+
+  .f-info-socials i {
+    font-size: 0.9rem; /* Smaller icon size */
+  }
+
+  .f-info-links {
+    flex-direction: column; /* Stack links vertically */
+    gap: 0.5rem; /* Adjust spacing */
+  }
+}
+
+.card {
+  border: none !important;
+  margin-bottom: 3rem !important;
+  border-radius: 5rem !important;
+}
+.card-img-top {
+  border-radius: none !important;
+  width: 100% !important;
+  object-fit: cover !important;
+  border-radius: 1rem !important;
+}
+.card-body {
+  padding: 0 !important;
+}
+.card-text p {
+  font-weight: 400;
+}
+.card-img-overlay {
+  opacity: 0;
+}
+.card-img-overlay:hover {
+  opacity: 0.2;
+  background-color: white;
+}
+
+/* chatgpt show.ejs styling Abhilash */
+/* General container styling */
+.details-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Title styling */
+.details-title {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Content layout */
+.details-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Image styling */
+.details-image {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex: 1 1 100%; /* Makes the image take full width on smaller screens */
+}
+
+/* Details info container */
+.details-info {
+  flex: 1 1 100%; /* Full width on smaller screens */
+  max-width: 100%;
+}
+
+/* Details list styling */
+.details-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  word-wrap: break-word; /* Ensure the text wraps inside the box */
+}
+
+/* Each list item styling */
+.details-list li {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #555;
+  word-wrap: break-word; /* Prevents overflow */
+  overflow-wrap: break-word; /* Breaks long words onto the next line */
+}
+
+/* Strong tags styling for labels */
+.details-list strong {
+  color: #333;
+}
+
+/* Action buttons */
+.details-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-edit {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #0056b3;
+}
+.containerhome {
+  margin-top: 10rem; /* Adds gap below the header */
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #a71d2a;
+}
+
+/* Form styling */
+.delete-form {
+  margin: 0;
+}
+.center-screen {
+  text-align: center;
+}
+
+/* Scrollable row with animation */
+.scrolling-row {
+  display: flex;
+  gap: 2rem;
+  overflow-x: hidden;
+  position: relative;
+  animation: scroll-right-left 40s linear infinite;
+  white-space: nowrap;
+  min-width: 100vw;
+}
+
+/* 3D Card Container */
+.card-container {
+  flex-shrink: 0;
+  width: 400px;
+  transform: rotateX(-20deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+.card-container:hover {
+  transform: rotateY(0deg) scale(1.05);
+}
+
+/* Right-to-left scrolling animation */
+@keyframes scroll-right-left {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+.scrolling-row {
+  display: inline-flex; /* Ensures images are arranged in a single row */
+  gap: 2rem; /* Space between images */
+  overflow-x: hidden; /* Prevents content from spilling outside the viewport */
+  position: relative; /* Required for animations */
+  animation: scroll-right-left 200s linear infinite; /* Slower scrolling animation */
+  white-space: nowrap; /* Prevent line wrapping */
+  min-width: max-content; /* Ensures the row fits all images */
+}
+
+@keyframes scroll-right-left {
+  from {
+    transform: translateX(0); /* Start at the initial position */
+  }
+  to {
+    transform: translateX(-100%); /* Scroll to the left completely */
+  }
+}
+
+/* Card Styling */
+.card {
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.card-img-top {
+  border-radius: 10px 10px 0 0;
+}
+.paragragh {
+  color: brown;
+  padding-top: 5rem;
+  font-size: large;
+}

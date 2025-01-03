@@ -1,0 +1,62 @@
+<% layout("/layouts/biolerplate")%>
+<body>
+    <div class="details-container">
+        <h1 class="details-title"><%=listing.title%></h1>
+        <div class="details-content">
+            <img src="<%= listing.image.url %>" alt="Hotel Images" class="details-image">
+            <div class="details-info">
+                <ul class="details-list">
+                    <li><strong>Title:</strong> <%= listing.title %></li>
+                    <li><strong>Description:</strong> <%= listing.description %></li>
+                    <li><strong>Image Filename:</strong> <%= listing.image.filename %></li>
+                    <li><strong>Image URL:</strong> <%= listing.image.url %></li>
+                    <li><strong>Price:</strong> &#8377;<%= listing.price.toLocaleString("en-IN") %>/Night</li>
+                    <li><strong>Location:</strong> <%= listing.location %></li>
+                    <li><strong>Country:</strong> <%= listing.country %></li>
+                </ul>
+                <div class="details-actions">
+                    <a href="/listings/<%= listing._id %>/edit" class="btn btn-edit btn btn-outline-success">Edit This Listing</a>
+                    <form method="post" action="/listings/<%= listing._id %>?_method=delete" class="delete-form">
+                        <button class="btn btn-delete  btn btn-outline-danger">Delete This Request</button>
+                    </form>
+                </div>
+                <div  class="details-container mb-3">
+                    <h4>Leave a Review</h4>
+                    <form method="post" action="/listings/<%= listing.id %>/reviews" novalidate class="needs-validation">
+                    <label for="rating"  class="form-label">Rating</label>
+                    <input type="range" min="0" max="5" id="rating" name="review[rating]" class="form-range" >
+                <div class="mb-3 mt-3">
+                    <label for="comment">Comment</label>
+                    <textarea name="review[comment]" id="comment" cols="35" rows="5" required></textarea>
+                </div>
+                <div style=" text-align: center;">
+                    <button class="btn btn-delete  btn btn-outline-success">Submit</button>
+                </div>
+            </div>
+       
+            </div>
+        </form>
+        <div class="details-container mb-3">
+            <h4>All Reviews</h4>
+       <% for(review of listing.reviews){%>
+        <hr/>
+        <li>Comment: <%=review.comment%></li> 
+        <li>Rating: <%=review.rating%></li>
+        <li>Created At:<%=review.createdAt%></li>
+    
+        <div>
+            <form method="post" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=delete" onsubmit="return confirmDelete()">
+                <button type="submit">Delete the review</button>
+            </form>
+            
+            <script>
+                function confirmDelete() {
+                    return confirm('Are you sure you want to delete this review?');
+                }
+            </script>
+            
+    </div>
+        <%}%>
+    </div>
+   
+</body>
