@@ -165,7 +165,5 @@ const initDb = async () => {
 };
 ```
 
-please continue
-
 
 
