@@ -1,94 +1,171 @@
-# Airbnb Clone
+# Wanderlust Application
 
-This is a simple Airbnb clone developed as part of a learning project. The application replicates the basic features of Airbnb, including browsing available properties, viewing property details, and booking a property. This project uses HTML, CSS, JavaScript, Node.js, and Express.js.
-
-## Table of Contents
-
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Folder Structure](#folder-structure)
-- [Contributing](#contributing)
-- [License](#license)
+Wanderlust is a full-stack Node.js application that helps users manage and explore room listings. It features functionality for CRUD operations, review management, and user interaction, all built using MongoDB, Express, and EJS templates.
 
 ## Features
 
-- User-friendly interface for browsing properties.
-- Dynamic pages using Node.js and Express.js.
-- Responsive design for various screen sizes.
-- Property details page.
-- Booking functionality.
+- Add, edit, and delete room listings.
+- View all listings with detailed information.
+- Leave reviews on listings with ratings.
+- Flash messages for success or error notifications.
+- Cookie handling for user-specific data.
+- Basic privacy and terms pages.
+
+## Table of Contents
+
+1. [Technologies Used](#technologies-used)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Project Structure](#project-structure)
+5. [Routes](#routes)
+6. [Error Handling](#error-handling)
 
 ## Technologies Used
 
-- **Frontend**: HTML, CSS, JavaScript
 - **Backend**: Node.js, Express.js
-- **Database**: [To be added if using one, e.g., MongoDB]
-- **Templating Engine**: [EJS, Pug, or Handlebars (if applicable)]
+- **Database**: MongoDB (via Mongoose ODM)
+- **Templating Engine**: EJS (with EJS Mate for layouts)
+- **CSS Framework**: Bootstrap
+- **Session Management**: Express-Session
+- **Flash Messages**: Connect-Flash
+- **Error Handling**: Custom Middleware
 
 ## Installation
 
-1. **Clone the repository**:
+1. Clone the repository:
+
    ```bash
-   git clone https://github.com/yourusername/airbnb-clone.git
-   cd airbnb-clone
+   git clone <repository-url>
    ```
 
-2. **Install dependencies**:
+2. Navigate to the project directory:
+
+   ```bash
+   cd wanderlust
+   ```
+
+3. Install dependencies:
+
    ```bash
    npm install
    ```
 
-3. **Start the server**:
+4. Start the MongoDB server locally:
+
    ```bash
-   npm start
+   mongod
    ```
 
-4. **Access the application**:
-   Open your browser and navigate to `http://localhost:3000`.
+5. Run the application:
+
+   ```bash
+   node app.js
+   ```
+
+6. Open your browser and navigate to:
+
+   ```
+   http://localhost:3000
+   ```
 
 ## Usage
 
-1. Browse properties on the homepage.
-2. Click on a property to view more details.
-3. Book a property by filling out the booking form (if implemented).
+### Home Page
 
-## Folder Structure
+- Visit the home page to see an overview of all listings.
+- Navigate to specific listings for more details or to add reviews.
+
+### Adding Listings
+
+- Use the `/listings/new` endpoint to create a new listing with title, description, price, and image details.
+
+### Editing Listings
+
+- Edit listings via the `/listings/:id/edit` endpoint.
+
+### Reviews
+
+- Add reviews with ratings for specific listings.
+- Delete reviews via the `/listings/:id/reviews/:reviewId` endpoint.
+
+## Project Structure
 
 ```
+project-folder
+├── models
+│   ├── listing.js       # Schema for room listings
+│   ├── review.js        # Schema for reviews
 ├── public
-│   ├── css
-│   │   └── styles.css
-│   ├── images
-│   └── js
-│       └── script.js
-├── routes
-│   └── index.js
+│   ├── css              # Static stylesheets
+│   └── js               # Client-side JavaScript
+├── utils
+│   ├── ExpressErrors.js # Custom error class
+│   ├── WrapAsync.js     # Async wrapper for error handling
 ├── views
-│   ├── index.ejs (or .html if not using templating engine)
-│   └── property-details.ejs
-├── app.js
-├── package.json
-└── README.md
+│   ├── includes         # Shared templates (header, footer, etc.)
+│   ├── listings         # Templates for CRUD operations
+│   └── error.ejs        # Error handling view
+├── data.js              # Sample data for initial database setup
+├── app.js               # Main application file
+├── package.json         # Dependencies and scripts
+└── README.md            # Project documentation
 ```
 
-- **public/**: Contains static assets like CSS, images, and client-side JavaScript.
-- **routes/**: Contains route definitions for the server.
-- **views/**: Contains HTML or templating engine files for rendering dynamic content.
-- **app.js**: The main entry point of the application.
-- **package.json**: Lists project dependencies and scripts.
+## Routes
 
-## Contributing
+### Main Routes
 
-Contributions are welcome! Please fork the repository and submit a pull request.
+| Method | Endpoint             | Description                  |
+| ------ | -------------------- | ---------------------------- |
+| GET    | `/`                  | Home page                    |
+| GET    | `/listings`          | View all listings            |
+| GET    | `/listings/new`      | Form to create a new listing |
+| POST   | `/listings`          | Create a new listing         |
+| GET    | `/listings/:id`      | View a specific listing      |
+| GET    | `/listings/:id/edit` | Form to edit a listing       |
+| PUT    | `/listings/:id`      | Update an existing listing   |
+| DELETE | `/listings/:id`      | Delete a listing             |
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-name`).
-3. Commit your changes (`git commit -m 'Add feature'`).
-4. Push to the branch (`git push origin feature-name`).
-5. Open a pull request.
+### Review Routes
 
-## License
+| Method | Endpoint                          | Description                  |
+| ------ | --------------------------------- | ---------------------------- |
+| POST   | `/listings/:id/reviews`           | Add a review to a listing    |
+| DELETE | `/listings/:id/reviews/:reviewId` | Delete a review from listing |
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+### Additional Routes
+
+| Method | Endpoint      | Description               |
+| ------ | ------------- | ------------------------- |
+| GET    | `/privacy`    | Privacy policy page       |
+| GET    | `/terms`      | Terms and conditions page |
+| GET    | `/getcookies` | Save a test cookie        |
+| GET    | `/getcoo`     | Retrieve cookies          |
+
+## Error Handling
+
+### Middleware
+
+- `ExpressErrors` class is used to create custom error messages with HTTP status codes.
+- `WrapAsync` wrapper is used to handle errors in asynchronous routes gracefully.
+
+### Default Error Handling
+
+- Unhandled routes or errors render the `error.ejs` template with a status code of 404.
+- Other exceptions are logged and sent to the client with appropriate status codes.
+
+## Sample Data Initialization
+
+Use the `initDb` function to populate the database with sample data:
+
+```js
+const initDb = async () => {
+  await Listing.insertMany(initData.data);
+  console.log("Data was initialized");
+};
+```
+
+please continue
+
+
+
